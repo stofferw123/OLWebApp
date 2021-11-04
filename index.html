@@ -26,6 +26,31 @@
         </ul>
         <br>
 
+        <h2>Get by Country</h2>
+        <input v-model="countryToGetBy"/>
+        <button v-on:click="getByCountry(countryToGetBy)" class="btn btn-primary">Get by country</button>
+        <div v-if="countryAthletes.length">
+            <li v-for="Athlete in countryAthletes">
+                ID = {{Athlete.id}}, Name = {{Athlete.name}}, country = {{Athlete.country}}, height = {{Athlete.height}}
+            </li>
+        </div>
+        <br>
+
+        <table class="table" v-if="Athletes.length" >
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Height</th>
+            </tr>
+            <tr v-for="Athlete in Athletes">
+                <td>{{Athlete.id}}</td>
+                <td>{{Athlete.name}}</td>
+                <td>{{Athlete.country}}</td>
+                <td>{{Athlete.height}}</td>
+            </tr>
+        </table>
+
         <h2>Add</h2>
         <input v-model="addData.name" placeholder="name" type="text" />
         <input v-model="addData.country" placeholder="country" type="text" />

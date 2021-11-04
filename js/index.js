@@ -7,6 +7,8 @@ Vue.createApp({
             addData: { name: "", country: "", height: 0},
             addMessage: "",
             deleteMessage: "",
+            countryToGetBy: "",
+            countryAthletes: [],
         }
     },
 
@@ -38,6 +40,15 @@ Vue.createApp({
                 this.deleteMessage = response.status + " " + response.statusText
                 this.getAllAthletes()
             } catch(ex) {
+                alert(ex.message)
+            }
+        },
+        async getByCountry(country) {
+            const url = baseUrl + "/" + "Country" + "/" + country
+            try {
+                const response = await axios.get(url)
+                this.countryAthletes = await response.data
+            } catch (ex) {
                 alert(ex.message)
             }
         }
